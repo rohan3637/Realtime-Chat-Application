@@ -1,0 +1,6 @@
+/api-gateway/node_modules
+/auth-backend/node_modules
+/backend/node_modules
+
+/hhld-chat-fe/node_modules
+/hhld-chat-fe/.next

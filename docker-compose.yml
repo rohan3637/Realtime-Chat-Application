@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  backend:
+    image: rohan289/chat-backend:lts
+    build:
+      context: ./backend # Path to the backend Dockerfile
+    ports:
+      - "9090:5000"
+
+  backend2:
+    image: rohan289/chat-backend2:lts
+    build:
+      context: ./backend # Path to the backend Dockerfile
+    ports:
+      - "9091:5000"
+
+  auth-backend:
+    image: rohan289/chat-auth-backend:lts
+    build:
+      context: ./auth-backend # Path to the backend Dockerfile
+    ports:
+      - "9092:5001"
+
+  frontend:
+    image: rohan289/chat-client:lts
+    build:
+      context: ./hhld-chat-fe # Path to the frontend Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend # Wait for backend service to be ready before starting frontend
+
+  frontend2:
+    image: rohan289/chat-client2:lts
+    build:
+      context: ./hhld-chat-fe_2 # Path to the frontend Dockerfile
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend # Wait for backend service to be ready before starting frontend
